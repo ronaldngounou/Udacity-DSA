@@ -14,14 +14,18 @@ class BST(object):
         current_node = self.root
         
         while current_node != None: #we traverse while the current_node (either left or right) is not None
-            if new_val < current_node: #if the new_val is less than the current_node, we should consider one case if there 
+            
+            if new_val == current.value:
+                pass
+            
+            elif new_val < current_node: #if the new_val is less than the current_node, we should consider one case if there 
             # is anything after the current_node and another case if there's already something after the current_node
                 if current_node.left == None: # if there is nothing:
                     current_node.left = Node(new_val) # I create a new Node
                     break #operation finished -> avoid infinite loop and exit the while loop.
                 current_node = current_node.left
-                 
-            else: 
+                
+            elif new_val > current_node: 
                 if current_node.right == None:
                     current_node.right = Node(new_val)
                     break
@@ -39,7 +43,7 @@ class BST(object):
             elif find_val < current_node:
             # we change the currentnode after we checked if the number is < or >
                 current_node = current_node.left
-            else:
+            elif find_val > current_node:
                 current_node = current_node.right
    
         return False
